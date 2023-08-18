@@ -20,24 +20,37 @@ form {
 
         &#form__header {
             height: 25%;
+            position: relative;
 
             #bolt {
-                height: 50px;
-                width: 30px;
+                position: absolute;
+                top: 25%;
+                left: 0;
             }
         }
 
-        &#form__username { height: 13%; }
+        &#form__username { 
+            height: 13%;
+
+            #username__label {
+                margin-left: 2%;
+            }
+        }
 
         &#form__password {
             height: 17%;
             @include flex.flex-content(column, space-between);
+
+            #password__label {
+                margin-left: 2%;
+            }
     
             #form__requires {
                 @include flex.flex-content(row, space-between);
                 list-style-type: none;
                 width: 100%;
                 margin-top: 10px;
+                margin-left: -10%;
     
                 li {
                     width: 33%;

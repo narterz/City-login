@@ -41,7 +41,10 @@ form {
             }
         }
 
-        .logo #bolt { color: map-get($colors, main); }
+        .logo,
+        #bolt { 
+            color: map-get($colors, main); 
+        }
     }
 }
 

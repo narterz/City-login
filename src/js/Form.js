@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import {FaBolt as Bolt, FaRegTimesCircle as Wrong, FaCheck as Check, FaCircle as Circle} from 'react-icons/fa';
+import { FaBolt as Bolt, FaRegTimesCircle as Wrong, FaCheck as Check, FaCircle as Circle } from 'react-icons/fa';
 
 function MainForm() {
     const [username, setUsername] = useState('');
@@ -11,28 +11,28 @@ function MainForm() {
     const [correctLenth, setCorrectLength] = useState(false);
     const [correctUpper, setCorrectUpper] = useState(false);
     const [correctSpecial, setCorrectSpecial] = useState(false);
- 
+
     const speacialChars = /['!@#$%&*-_+?,.~']/
     const hasUpper = p => { return /[A-Z]/.test(p); };
-    const hasSpecial = p => {return speacialChars.test(p)}
+    const hasSpecial = p => { return speacialChars.test(p) }
     const hasLength = p => { return p.length >= 8 };
     const passwordCheck = [hasLength(password), hasSpecial(password), hasUpper(password)];
     const allPass = passwordCheck.every((e) => { return e === true });
 
     const navigate = useNavigate();
 
-    const PassIcons = (x) => { 
-        return x ? <Check id="check" style={{color: "lightgreen"}}/> : <Wrong id="wrong" style={{color: "red"}}/>
+    const PassIcons = (x) => {
+        return x ? <Check id="check" style={{ color: "lightgreen" }} /> : <Wrong id="wrong" style={{ color: "red" }} />
     }
 
     const formStyles = (input, val) => {
-        if (input.length == 0){
-            return {borderColor: '#f1f1f4'}
+        if (input.length == 0) {
+            return { borderColor: '#f1f1f4' }
         } else {
-            if(val) {
-                return {borderColor: 'lightgreen'}
+            if (val) {
+                return { borderColor: 'lightgreen' }
             } else {
-                return {borderColor: 'lightpink'}
+                return { borderColor: 'lightpink' }
             }
         }
     }
@@ -54,11 +54,10 @@ function MainForm() {
             <div className="blur"></div>
             <form action="">
                 <div className="form__container" id="form__header">
-                    <div className="logo"><Bolt id="bolt"/></div>
+                    <Bolt id="bolt" size={40}/>
                     <h1>Welcome Back</h1>
                     <p>Welcome back! Please enter your details below</p>
                 </div>
-                <hr />
                 <div className="form__container inputs" id="form__username">
                     <label htmlFor="" id="username__label">Username*</label>
                     <input
@@ -76,11 +75,11 @@ function MainForm() {
                         placeholder="Min 8 characters, 1 uppercase, 1 special"
                         onChange={(e) => { setPassword(e.target.value) }}
                         style={formStyles(password, validPass)} />
-                        <ul className='password__child' id="form__requires">
-                            <li><span>{PassIcons(correctLenth)}</span>8 charaters</li>
-                            <li><span> {PassIcons(correctUpper)}</span>1 uppercase</li>
-                            <li><span>{PassIcons(correctSpecial)}</span>1 special</li>
-                        </ul>
+                    <ul className='password__child' id="form__requires">
+                        <li><span>{PassIcons(correctLenth)}</span>8 charaters</li>
+                        <li><span> {PassIcons(correctUpper)}</span>1 uppercase</li>
+                        <li><span>{PassIcons(correctSpecial)}</span>1 special</li>
+                    </ul>
                 </div>
                 <div className="form__container checks" id="password-options">
                     <div id="checks-wrapper">
